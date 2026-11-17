@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VOX Cool | Cold Storage Energy Savings Estimator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Archivo:wdth,wght@100,800;125,900&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="logo" viewBox="0 0 60 64"><path d="M30 3 5 12v22c0 14 11 23 25 27 14-4 25-13 25-27V12z" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round"/><path d="M19 24l11 20 11-20" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-size" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="26" y="8" width="12" height="32" rx="6"/><circle cx="32" cy="44" r="7"/><path d="M8 56l14-14M8 46v10h10M56 8 42 22M56 18V8H46"/></g></symbol>
+  <symbol id="i-equip" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="10" width="48" height="44" rx="4"/><path d="M8 20h48M20 44h24v-8H20zM24 28h16"/></g></symbol>
+  <symbol id="i-comp" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="26" width="46" height="22" rx="8"/><circle cx="20" cy="38" r="6"/><rect x="26" y="14" width="22" height="12" rx="4"/><path d="M12 14h10M12 18h10M58 20l-8-4M30 48l-4 8M44 48l4 8"/></g></symbol>
+  <symbol id="i-defrost" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="58" height="58" rx="9"/><path d="M32 12v28M20 18l24 16M44 18 20 34M26 14l6 5 6-5M26 38l6-5 6 5M20 50c3-3 0-5 3-8M32 52c3-3 0-5 3-8M44 50c3-3 0-5 3-8"/></g></symbol>
+  <symbol id="i-solar" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="14" r="6"/><path d="M14 2v4M2 14h4M5 5l3 3M23 5l-3 3M5 23l3-3M26 30l30 4-6 22H20zM22 40h32M20 48h30M30 31l-3 24M40 33l-2 23"/></g></symbol>
+  <symbol id="i-rate" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M36 10 20 34h12l-4 20 16-24H32z"/><path d="M10 28A24 24 0 0 1 48 10M54 36A24 24 0 0 1 16 54M44 4l5 6-7 3M20 60l-5-6 7-3"/></g></symbol>
+</svg>
+
+<main id="app" data-step="0">
+
+  <!-- 0 Landing -->
+  <section class="screen landing" data-screen="0">
+    <svg class="peak" viewBox="0 0 1400 800" preserveAspectRatio="xMaxYMax slice" aria-hidden="true">
+      <polygon points="700,800 900,520 1010,360 1060,170 1120,260 1230,430 1290,470 1400,560 1400,800" fill="#3c4650"/>
+      <polygon points="1060,170 1020,330 1060,420 1110,330 1120,260" fill="#e9f1f8"/>
+      <polygon points="1010,360 960,470 1040,520 1060,420" fill="#eef4fa"/>
+      <polygon points="1120,260 1180,420 1130,520 1100,420" fill="#dfe9f3" opacity=".9"/>
+      <polygon points="0,800 0,640 120,590 230,610 330,570 450,610 560,640 700,800" fill="#2a3340"/>
+      <polygon points="120,590 170,640 90,660" fill="#cfdbe7"/><polygon points="330,570 370,620 300,630" fill="#cfdbe7"/>
+    </svg>
+    <div class="brand"><svg class="logo"><use href="#logo"/></svg><div><strong>VOX COOL</strong><span>Thermal Energy Storage</span></div><i></i><p>Cold Storage<br>Energy Savings Estimator</p></div>
+    <h1>How much <em>money</em> could you save?</h1>
+    <button class="cta" data-go="1">Click now to find out!</button>
+  </section>
+
+  <!-- 1-6 wizard -->
+  <section class="screen wizard" data-screen="1" data-icon="size">
+    <div class="fields">
+      <label for="sqft">Square Footage of Freezer</label>
+      <div class="row"><input id="sqft" inputmode="numeric" autocomplete="off"><span>sqft</span></div>
+      <label for="temp">Temperature Set Point</label>
+      <div class="row"><input id="temp" inputmode="numeric" autocomplete="off"><span>°F</span></div>
+    </div>
+    <div class="keypad" data-extra="-"></div>
+  </section>
+
+  <section class="screen wizard" data-screen="2" data-icon="equip"><div class="groups" id="g-equip"></div></section>
+  <section class="screen wizard" data-screen="3" data-icon="comp"><div class="groups" id="g-comp"></div></section>
+  <section class="screen wizard" data-screen="4" data-icon="defrost"><div class="groups" id="g-defrost"></div></section>
+  <section class="screen wizard" data-screen="5" data-icon="solar"><div class="groups" id="g-solar"></div></section>
+
+  <section class="screen wizard" data-screen="6" data-icon="rate">
+    <div class="fields">
+      <label for="rate">Input kWh Rate</label>
+      <div class="row"><input id="rate" inputmode="decimal" placeholder="Cents US" autocomplete="off"><span>¢</span></div>
+      <label class="or" for="state">or Select a State</label>
+      <select id="state"><option value="">Industrial kWh for ...</option></select>
+    </div>
+    <div class="keypad" data-extra="."></div>
+  </section>
+
+  <!-- 7 Result -->
+  <section class="screen result" data-screen="7">
+    <svg class="logo"><use href="#logo"/></svg><b class="rname">VOX COOL</b>
+    <h2>Your Estimated Savings</h2>
+    <div class="stats">
+      <svg class="donut" viewBox="0 0 120 120"><circle cx="60" cy="60" r="44" fill="none" stroke="#fff" stroke-width="24"/><circle id="arc" cx="60" cy="60" r="44" fill="none" stroke="#38b759" stroke-width="24" transform="rotate(-90 60 60)" stroke-dasharray="0 999"/><text id="pct" x="60" y="66" text-anchor="middle">0%</text></svg>
+      <div class="nums">
+        <p><span>Refrigeration Energy Consumption:</span><b><i>⬇</i><span id="o-pct">0%</span></b></p>
+        <p><span>Annual Estimated Energy Savings:</span><b><i>⬇</i><span id="o-usd">$0*</span></b></p>
+        <small id="o-base"></small>
+      </div>
+    </div>
+    <div class="more"><b>$$$</b><p>Even more savings expected with your demand, transmission, and time-of-use charges and taxes calculated</p></div>
+    <button class="footbtn dark full" data-go="8">Click for the report</button>
+  </section>
+
+  <!-- 8 Report -->
+  <section class="screen report" data-screen="8">
+    <h2>Savings Report</h2>
+    <table id="r-table"></table>
+    <p class="disc">Estimate only. Actual savings depend on site conditions and utility tariff.</p>
+    <div class="rbtns"><button class="footbtn dark" onclick="window.print()">Print</button><button class="footbtn" data-go="7">Back</button></div>
+  </section>
+
+  <!-- chrome -->
+  <nav class="side" aria-label="Progress"><svg class="logo"><use href="#logo"/></svg>
+    <ol></ol></nav>
+  <header class="top"><div class="title"><span>Cold Storage</span><span>Energy Savings Estimator</span></div></header>
+  <button class="restart" data-go="0">Restart</button>
+  <p class="err" id="err" role="alert"></p>
+  <footer class="foot"><button class="footbtn dark" id="back">Back</button><button class="footbtn" id="next">Next</button></footer>
+</main>
+<script src="calc.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
